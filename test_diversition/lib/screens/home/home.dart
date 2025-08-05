@@ -55,38 +55,44 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _resultText = checkPrimeAndExplain(number);
     });
+    FocusScope.of(context).unfocus();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(LocaleKeys.prime_title.tr)),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _numberController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: LocaleKeys.enter_number.tr,
-                border: OutlineInputBorder(),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        appBar: AppBar(title: Text(LocaleKeys.prime_title.tr)),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              TextField(
+                controller: _numberController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: LocaleKeys.enter_number.tr,
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _checkNumber,
-              child: Text(LocaleKeys.check_prime.tr),
-            ),
-            SizedBox(height: 20),
-            Expanded(
-              // ใช้ Expanded เพื่อให้ข้อความแสดงผลได้เต็มพื้นที่
-              child: SingleChildScrollView(
-                // ใช้ SingleChildScrollView เพื่อให้เลื่อนดูได้ถ้าข้อความยาว
-                child: Text(_resultText, style: TextStyle(fontSize: 16)),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _checkNumber,
+                child: Text(LocaleKeys.check_prime.tr),
               ),
-            ),
-          ],
+              SizedBox(height: 20),
+              Expanded(
+                // ใช้ Expanded เพื่อให้ข้อความแสดงผลได้เต็มพื้นที่
+                child: SingleChildScrollView(
+                  // ใช้ SingleChildScrollView เพื่อให้เลื่อนดูได้ถ้าข้อความยาว
+                  child: Text(_resultText, style: TextStyle(fontSize: 16)),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
