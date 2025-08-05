@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_diversition/generated/locales.g.dart';
 import 'package:test_diversition/models/user_model.dart';
 import 'package:test_diversition/screens/users/user_form_screen.dart';
 import 'package:test_diversition/services/user_service.dart';
@@ -31,7 +32,7 @@ class _UserScreenState extends State<UserScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Users List'),
+        title: Text(LocaleKeys.users.tr),
         actions: [
           IconButton(icon: const Icon(Icons.refresh), onPressed: _refreshUsers),
         ],
@@ -59,7 +60,9 @@ class _UserScreenState extends State<UserScreen> {
                     leading: CircleAvatar(
                       backgroundImage: NetworkImage(user.profileImage ?? ''),
                     ),
-                    title: Text('ชื่อ : ${user.firstName} ${user.lastName}'),
+                    title: Text(
+                      '${LocaleKeys.user_name.tr} : ${user.firstName} ${user.lastName}',
+                    ),
                     subtitle: Text(user.email ?? 'No email'),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,

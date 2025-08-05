@@ -1,0 +1,41 @@
+{
+  "login_title": "เข้าสู่ระบบ",
+  "username_hint": "ชื่อผู้ใช้",
+  "password_hint": "รหัสผ่าน",
+  "login_button": "เข้าสู่ระบบ",
+  "setting_title": "ตั้งค่า",
+  "language_label": "ภาษา",
+  "dont_account": "ยังไม่มีบัญชี ? ลงทะเบียน",
+  "next": "ถัดไป", 
+  "back": "ย้อนกลับ",
+  "at_least_8": "รหัสผ่านอย่างน้อย 8 ตัว",
+  "upperAZ": "รหัสผ่านจะต้องมีตัวอักษรภาษาอังกฤษตัวใหญ่",
+  "lowerAZ": "รหัสผ่านจะต้องมีตัวอักษรภาษาอังกฤษตัวเล็ก)",
+  "contain_special": "รหัสผ่านจะต้องมีอักขระพิเศษ เช่น  (!@#<>?:_~;*&^%-,./{}$)",
+  "register" :"สมัครสมาชิก",
+  "prime_title" :"ตรวจสอบจำนวนเฉพาะ",
+  "checked" :"ตรวจสอบ",
+  "enter_number" :"ป้อนตัวเลข",
+  "check_prime" :"ตรวจสอบ",
+  "home":"หน้าหลัก",
+  "users":"สมาชิก",
+  "settings":"ตั้งค่า",
+  "change_language":"เปลี่ยนภาษา",
+  "dark_mode":"โหมดมืด",
+  "logout":"ออกจากระบบ",  
+  "confirm":"ยืนยัน",
+  "update":"อัพเดท",
+  "user": {
+    "name":"ชื่อ",
+    "first_name":"ชื่อ",
+    "last_name":"นามสกุล",
+    "Email":"อีเมล",
+    "phone_number":"เบอร์โทรศัพท์",
+    "profile_img":"Profile Image URL (Optional)"
+  },
+  "validate": {
+    "please_fill_username": "กรุณากรอกชื่อผู้ใช้",
+    "please_fill_paassword": "กรุณากรอกรหัสผ่าน",
+    "please_enter_number" : "กรุณาใส่ตัวเลขที่ถูกต้อง"
+  }
+}

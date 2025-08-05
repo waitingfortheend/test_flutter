@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:test_diversition/controllers/auth_controller.dart';
+import 'package:test_diversition/generated/locales.g.dart';
 import 'package:test_diversition/widgets/random_shape_widget.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -16,7 +17,25 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(
+        title: Text(LocaleKeys.login_title.tr),
+        actions: [
+          // TextButton(
+          //   onPressed: () {
+          //     context.setLocale(const Locale('th'));
+          //   },
+          //   child: const Text('TH', style: TextStyle(color: Colors.white)),
+          // ),
+
+          // TextButton(
+          //   onPressed: () {
+          //     context.setLocale(const Locale('en'));
+          //   },
+          //   child: const Text('EN', style: TextStyle(color: Colors.white)),
+          // ),
+        ],
+      ),
+
       body: Stack(
         children: [
           Positioned.fill(
@@ -35,10 +54,12 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   TextFormField(
                     controller: _usernameController,
-                    decoration: const InputDecoration(labelText: 'Username'),
+                    decoration: InputDecoration(
+                      labelText: LocaleKeys.username_hint.tr,
+                    ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your username';
+                        return LocaleKeys.validate_please_fill_username.tr;
                       }
                       return null;
                     },
@@ -46,11 +67,13 @@ class LoginScreen extends StatelessWidget {
                   Gap(16),
                   TextFormField(
                     controller: _passwordController,
-                    decoration: const InputDecoration(labelText: 'Password'),
+                    decoration: InputDecoration(
+                      labelText: LocaleKeys.password_hint.tr,
+                    ),
                     obscureText: true,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your password';
+                        return LocaleKeys.validate_please_fill_paassword.tr;
                       }
                       return null;
                     },
@@ -72,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                               }
                             }
                           },
-                          child: const Text('Login'),
+                          child: Text(LocaleKeys.login_button.tr),
                         );
                   }),
                   TextButton(
@@ -80,7 +103,7 @@ class LoginScreen extends StatelessWidget {
                       Get.toNamed('/register');
                     },
                     child: Text(
-                      'Don\'t have an account? Register',
+                      LocaleKeys.dont_account.tr,
                       style: TextStyle(fontWeight: FontWeight.w700),
                     ),
                   ),

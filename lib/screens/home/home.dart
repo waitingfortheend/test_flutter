@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:test_diversition/generated/locales.g.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,7 +11,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _numberController = TextEditingController();
-  String _resultText = "กรุณากรอกตัวเลขเพื่อตรวจสอบ";
+  String _resultText = "";
 
   String checkPrimeAndExplain(int number) {
     if (number < 2) {
@@ -45,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
     int? number = int.tryParse(_numberController.text);
     if (number == null) {
       setState(() {
-        _resultText = "กรุณาใส่ตัวเลขที่ถูกต้อง!";
+        _resultText = LocaleKeys.validate_please_enter_number.tr;
       });
       return;
     }
@@ -58,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("ตรวจสอบจำนวนเฉพาะ")),
+      appBar: AppBar(title: Text(LocaleKeys.prime_title.tr)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -67,12 +69,15 @@ class _HomeScreenState extends State<HomeScreen> {
               controller: _numberController,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                labelText: 'ป้อนตัวเลข',
+                labelText: LocaleKeys.enter_number.tr,
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 20),
-            ElevatedButton(onPressed: _checkNumber, child: Text("ตรวจสอบ")),
+            ElevatedButton(
+              onPressed: _checkNumber,
+              child: Text(LocaleKeys.check_prime.tr),
+            ),
             SizedBox(height: 20),
             Expanded(
               // ใช้ Expanded เพื่อให้ข้อความแสดงผลได้เต็มพื้นที่

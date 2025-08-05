@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:test_diversition/controllers/auth_controller.dart';
+import 'package:test_diversition/generated/locales.g.dart';
 import 'package:test_diversition/models/user_model.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
@@ -141,7 +142,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Register New User')),
+      appBar: AppBar(title: Text(LocaleKeys.register.tr)),
       body: Column(
         children: [
           Expanded(
@@ -158,8 +159,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       children: [
                         TextFormField(
                           controller: _usernameController,
-                          decoration: const InputDecoration(
-                            labelText: 'Username',
+                          decoration: InputDecoration(
+                            labelText: LocaleKeys.username_hint.tr,
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -175,12 +176,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           },
                         ),
-                        Gap(8),
+                        Gap(16),
                         TextFormField(
                           controller: _passwordController,
-                          decoration: const InputDecoration(
-                            labelText: 'Password',
+                          decoration: InputDecoration(
+                            labelText: LocaleKeys.password_hint.tr,
                           ),
+                          style: TextStyle(overflow: TextOverflow.ellipsis),
                           obscureText: true,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -203,19 +205,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               _buildValidationRow(
-                                'At least 8 characters',
+                                LocaleKeys.at_least_8.tr,
                                 _hasMinLength.value,
                               ),
+                              Gap(16),
                               _buildValidationRow(
-                                'Contains an uppercase letter (A-Z)',
+                                LocaleKeys.upperAZ.tr,
                                 _hasUppercase.value,
                               ),
+                              Gap(16),
                               _buildValidationRow(
-                                'Contains a lowercase letter (a-z)',
+                                LocaleKeys.lowerAZ.tr,
                                 _hasLowercase.value,
                               ),
+                              Gap(16),
                               _buildValidationRow(
-                                'Contains a special character (!@#\$%)',
+                                LocaleKeys.contain_special.tr,
                                 _hasSpecialCharacter.value,
                               ),
                             ],
@@ -233,7 +238,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               );
                             }
                           },
-                          child: const Text('Next'),
+                          child: Text(LocaleKeys.next.tr),
                         ),
                       ],
                     ),
@@ -248,8 +253,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       children: [
                         TextFormField(
                           controller: _firstNameController,
-                          decoration: const InputDecoration(
-                            labelText: 'First Name',
+                          decoration: InputDecoration(
+                            labelText: LocaleKeys.user_first_name.tr,
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -258,11 +263,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           },
                         ),
-                        Gap(8),
+                        Gap(16),
                         TextFormField(
                           controller: _lastNameController,
-                          decoration: const InputDecoration(
-                            labelText: 'Last Name',
+                          decoration: InputDecoration(
+                            labelText: LocaleKeys.user_last_name.tr,
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -271,11 +276,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           },
                         ),
-                        Gap(8),
+                        Gap(16),
                         TextFormField(
                           controller: _emailController,
-                          decoration: const InputDecoration(
-                            labelText: 'Email',
+                          decoration: InputDecoration(
+                            labelText: LocaleKeys.user_Email.tr,
                             hintText: 'Enter Email ###@email.com',
                           ),
                           keyboardType: TextInputType.emailAddress,
@@ -285,16 +290,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               return 'Please enter email';
                             }
                             if (!GetUtils.isEmail(value)) {
-                              return 'Please enter a valid email';
+                              return 'Please enter a pattern email';
                             }
                             return null;
                           },
                         ),
-                        Gap(8),
+                        Gap(16),
                         TextFormField(
                           controller: _phoneNumberController,
-                          decoration: const InputDecoration(
-                            labelText: 'Phone Number',
+                          decoration: InputDecoration(
+                            labelText: LocaleKeys.user_phone_number.tr,
                             hintText: 'Enter Phone Number (###-###-####)',
                           ),
                           keyboardType: TextInputType.phone,
@@ -310,11 +315,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           },
                         ),
-                        Gap(8),
+                        Gap(16),
                         TextFormField(
                           controller: _profileImageController,
-                          decoration: const InputDecoration(
-                            labelText: 'Profile Image URL',
+                          decoration: InputDecoration(
+                            labelText: LocaleKeys.user_profile_img.tr,
                           ),
                           keyboardType: TextInputType.url,
                         ),
@@ -329,14 +334,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   curve: Curves.easeIn,
                                 );
                               },
-                              child: const Text('Back'),
+                              child: Text(LocaleKeys.back.tr),
                             ),
                             Obx(() {
                               return _isSubmitting.value
                                   ? const CircularProgressIndicator()
                                   : ElevatedButton(
                                     onPressed: _handleSubmit,
-                                    child: const Text('Register'),
+                                    child: Text(LocaleKeys.register.tr),
                                   );
                             }),
                           ],
@@ -362,9 +367,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
           size: 16,
         ),
         const SizedBox(width: 8),
-        Text(
-          text,
-          style: TextStyle(color: isValid ? Colors.green : Colors.red),
+        Expanded(
+          child: Text(
+            text,
+            softWrap: true,
+            style: TextStyle(
+              color: isValid ? Colors.green : Colors.red,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
         ),
       ],
     );

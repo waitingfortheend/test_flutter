@@ -1,0 +1,49 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'app_setting_model.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+AppSettingModel _$AppSettingModelFromJson(Map<String, dynamic> json) =>
+    AppSettingModel(
+      $enumDecode(_$FontTypeEnumMap, json['font_type']),
+      $enumDecode(_$LocaleTypeEnumMap, json['language']),
+    );
+
+Map<String, dynamic> _$AppSettingModelToJson(AppSettingModel instance) =>
+    <String, dynamic>{
+      'font_type': _$FontTypeEnumMap[instance.fontType]!,
+      'language': _$LocaleTypeEnumMap[instance.language]!,
+    };
+
+const _$FontTypeEnumMap = {
+  FontType.normal: 'normal',
+  FontType.large: 'large',
+  FontType.extraLarge: 'extraLarge',
+};
+
+const _$LocaleTypeEnumMap = {
+  LocaleType.en: 'en',
+  LocaleType.ar: 'ar',
+  LocaleType.bn: 'bn',
+  LocaleType.de: 'de',
+  LocaleType.es: 'es',
+  LocaleType.fr: 'fr',
+  LocaleType.hi: 'hi',
+  LocaleType.id: 'id',
+  LocaleType.it: 'it',
+  LocaleType.ja: 'ja',
+  LocaleType.ko: 'ko',
+  LocaleType.lo: 'lo',
+  LocaleType.ms: 'ms',
+  LocaleType.nl: 'nl',
+  LocaleType.pl: 'pl',
+  LocaleType.pt: 'pt',
+  LocaleType.ru: 'ru',
+  LocaleType.th: 'th',
+  LocaleType.tr: 'tr',
+  LocaleType.vi: 'vi',
+  LocaleType.zh: 'zh',
+};

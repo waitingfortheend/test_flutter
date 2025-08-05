@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:test_diversition/generated/locales.g.dart';
 import 'package:test_diversition/models/user_model.dart';
 import 'package:test_diversition/services/user_service.dart';
 
@@ -97,7 +99,9 @@ class _UserFormScreenState extends State<UserFormScreen> {
               children: [
                 TextFormField(
                   controller: _firstNameController,
-                  decoration: const InputDecoration(labelText: 'First Name'),
+                  decoration: InputDecoration(
+                    labelText: LocaleKeys.user_first_name.tr,
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter first name';
@@ -105,10 +109,12 @@ class _UserFormScreenState extends State<UserFormScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 16),
+                const Gap(16),
                 TextFormField(
                   controller: _lastNameController,
-                  decoration: const InputDecoration(labelText: 'Last Name'),
+                  decoration: InputDecoration(
+                    labelText: LocaleKeys.user_last_name.tr,
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter last name';
@@ -116,10 +122,12 @@ class _UserFormScreenState extends State<UserFormScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 16),
+                const Gap(16),
                 TextFormField(
                   controller: _emailController,
-                  decoration: const InputDecoration(labelText: 'Email'),
+                  decoration: InputDecoration(
+                    labelText: LocaleKeys.user_Email.tr,
+                  ),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -131,10 +139,12 @@ class _UserFormScreenState extends State<UserFormScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 16),
+                const Gap(16),
                 TextFormField(
                   controller: _phoneNumberController,
-                  decoration: const InputDecoration(labelText: 'Phone Number'),
+                  decoration: InputDecoration(
+                    labelText: LocaleKeys.user_phone_number.tr,
+                  ),
                   keyboardType: TextInputType.phone,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -143,11 +153,11 @@ class _UserFormScreenState extends State<UserFormScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 16),
+                const Gap(16),
                 TextFormField(
                   controller: _profileImageController,
-                  decoration: const InputDecoration(
-                    labelText: 'Profile Image URL (Optional)',
+                  decoration: InputDecoration(
+                    labelText: LocaleKeys.user_profile_img.tr,
                   ),
                   keyboardType: TextInputType.url,
                 ),

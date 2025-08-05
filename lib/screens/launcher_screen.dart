@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:test_diversition/generated/locales.g.dart';
 import 'package:test_diversition/screens/home/home.dart';
 import 'package:test_diversition/screens/setting/settings_screen.dart';
 import 'package:test_diversition/screens/users/user_screen.dart';
@@ -52,12 +54,18 @@ class _LauncherScreenState extends State<LauncherScreen> {
         children: _screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Users'),
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: LocaleKeys.home.tr,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: LocaleKeys.users.tr,
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Settings',
+            label: LocaleKeys.setting_title.tr,
           ),
         ],
         currentIndex: _selectedIndex,
