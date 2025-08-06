@@ -159,6 +159,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       children: [
                         TextFormField(
                           controller: _usernameController,
+                          autocorrect: false,
                           decoration: InputDecoration(
                             labelText: LocaleKeys.username_hint.tr,
                           ),
@@ -176,9 +177,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           },
                         ),
-                        Gap(16),
+                        const Gap(16),
                         TextFormField(
                           controller: _passwordController,
+                          autocorrect: false,
                           decoration: InputDecoration(
                             labelText: LocaleKeys.password_hint.tr,
                           ),
@@ -199,7 +201,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           },
                         ),
-                        const SizedBox(height: 10),
+                        const Gap(10),
                         Obx(
                           () => Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,17 +210,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 LocaleKeys.at_least_8.tr,
                                 _hasMinLength.value,
                               ),
-                              Gap(16),
+                              const Gap(16),
                               _buildValidationRow(
                                 LocaleKeys.upperAZ.tr,
                                 _hasUppercase.value,
                               ),
-                              Gap(16),
+                              const Gap(16),
                               _buildValidationRow(
                                 LocaleKeys.lowerAZ.tr,
                                 _hasLowercase.value,
                               ),
-                              Gap(16),
+                              const Gap(16),
                               _buildValidationRow(
                                 LocaleKeys.contain_special.tr,
                                 _hasSpecialCharacter.value,
@@ -226,7 +228,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ],
                           ),
                         ),
-                        const SizedBox(height: 20),
+                        const Gap(20),
                         ElevatedButton(
                           onPressed: () {
                             if (_formKeyStep1.currentState != null &&
@@ -263,7 +265,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           },
                         ),
-                        Gap(16),
+                        const Gap(16),
                         TextFormField(
                           controller: _lastNameController,
                           decoration: InputDecoration(
@@ -276,7 +278,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           },
                         ),
-                        Gap(16),
+                        const Gap(16),
                         TextFormField(
                           controller: _emailController,
                           decoration: InputDecoration(
@@ -295,7 +297,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           },
                         ),
-                        Gap(16),
+                        const Gap(16),
                         TextFormField(
                           controller: _phoneNumberController,
                           decoration: InputDecoration(
@@ -315,7 +317,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           },
                         ),
-                        Gap(16),
+                        const Gap(16),
                         TextFormField(
                           controller: _profileImageController,
                           decoration: InputDecoration(
@@ -323,7 +325,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           keyboardType: TextInputType.url,
                         ),
-                        const SizedBox(height: 20),
+                        const Gap(20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -366,7 +368,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           color: isValid ? Colors.green : Colors.red,
           size: 16,
         ),
-        const SizedBox(width: 8),
+        const Gap(8),
         Expanded(
           child: Text(
             text,

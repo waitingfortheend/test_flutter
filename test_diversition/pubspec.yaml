@@ -44,6 +44,8 @@ dependencies:
   json_annotation: ^4.9.0
   get_cli: ^1.9.1
   flutter_riverpod: ^2.6.1
+  custom_refresh_indicator: ^4.0.1
+  carousel_slider: ^5.1.1
 
 flutter_localizations:
     sdk: flutter

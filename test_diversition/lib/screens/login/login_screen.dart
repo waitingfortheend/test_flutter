@@ -5,14 +5,30 @@ import 'package:test_diversition/controllers/auth_controller.dart';
 import 'package:test_diversition/generated/locales.g.dart';
 import 'package:test_diversition/widgets/random_shape_widget.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final AuthController _authController = Get.find<AuthController>();
 
   final TextEditingController _usernameController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  bool _isPasswordVisible = false;
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +51,6 @@ class LoginScreen extends StatelessWidget {
           // ),
         ],
       ),
-
       body: Stack(
         children: [
           Positioned.fill(
@@ -52,8 +67,11 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Text("Welcome", style: TextStyle(fontSize: 32)),
+                  const Gap(32),
                   TextFormField(
                     controller: _usernameController,
+                    autocorrect: false,
                     decoration: InputDecoration(
                       labelText: LocaleKeys.username_hint.tr,
                     ),
@@ -64,13 +82,27 @@ class LoginScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-                  Gap(16),
+                  const Gap(16),
                   TextFormField(
                     controller: _passwordController,
+                    autocorrect: false,
                     decoration: InputDecoration(
                       labelText: LocaleKeys.password_hint.tr,
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isPasswordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isPasswordVisible = !_isPasswordVisible;
+                          });
+                        },
+                      ),
                     ),
-                    obscureText: true,
+                    obscureText: !_isPasswordVisible, // Control visibility
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return LocaleKeys.validate_please_fill_paassword.tr;
@@ -78,7 +110,21 @@ class LoginScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 20),
+                  // TextFormField(
+                  //   controller: _passwordController,
+                  //   autocorrect: false,
+                  //   decoration: InputDecoration(
+                  //     labelText: LocaleKeys.password_hint.tr,
+                  //   ),
+                  //   obscureText: true,
+                  //   validator: (value) {
+                  //     if (value == null || value.isEmpty) {
+                  //       return LocaleKeys.validate_please_fill_paassword.tr;
+                  //     }
+                  //     return null;
+                  //   },
+                  // ),
+                  const Gap(20),
                   Obx(() {
                     return _authController.isLoading.value
                         ? const CircularProgressIndicator()

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:test_diversition/generated/locales.g.dart';
 
@@ -78,12 +79,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 20),
+              const Gap(20),
               ElevatedButton(
                 onPressed: _checkNumber,
                 child: Text(LocaleKeys.check_prime.tr),
               ),
-              SizedBox(height: 20),
+              const Gap(20),
               Expanded(
                 // ใช้ Expanded เพื่อให้ข้อความแสดงผลได้เต็มพื้นที่
                 child: SingleChildScrollView(

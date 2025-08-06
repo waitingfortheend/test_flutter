@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:test_diversition/controllers/auth_controller.dart';
 import 'package:test_diversition/providers/base_provider.dart';
@@ -51,7 +52,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircularProgressIndicator(),
-            SizedBox(height: 20),
+            const Gap(20),
             Text('Loading...'),
           ],
         ),

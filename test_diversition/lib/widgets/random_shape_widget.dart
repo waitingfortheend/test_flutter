@@ -20,7 +20,7 @@ class _RandomShapeAnimationState extends State<RandomShapeAnimation>
 
   final Random _random = Random();
   ShapeType _currentShape = ShapeType.circle;
-  Color _currentColor = Colors.orange; // ตัวแปรสำหรับเก็บสีที่สุ่มได้
+  Color _currentColor = Colors.orange;
 
   @override
   void initState() {
@@ -55,23 +55,22 @@ class _RandomShapeAnimationState extends State<RandomShapeAnimation>
     _controller.addListener(() {
       if (_controller.status == AnimationStatus.completed ||
           _controller.status == AnimationStatus.dismissed) {
-        _generateRandomShape(); // สุ่มรูปทรงและสีใหม่เมื่ออนิเมชันแต่ละรอบจบ
+        _generateRandomShape();
       }
     });
 
-    _generateRandomShape(); // สุ่มรูปทรงและสีเริ่มต้น
+    _generateRandomShape();
   }
 
   void _generateRandomShape() {
     setState(() {
       _currentShape =
           ShapeType.values[_random.nextInt(ShapeType.values.length)];
-      // สุ่มสีใหม่ทุกครั้งที่เรียก
       _currentColor = Color.fromRGBO(
-        _random.nextInt(256), // ค่าสีแดง (0-255)
-        _random.nextInt(256), // ค่าสีเขียว (0-255)
-        _random.nextInt(256), // ค่าสีน้ำเงิน (0-255)
-        1.0, // ค่า Alpha (ความทึบแสง)
+        _random.nextInt(256),
+        _random.nextInt(256),
+        _random.nextInt(256),
+        1.0,
       );
     });
   }
@@ -95,7 +94,7 @@ class _RandomShapeAnimationState extends State<RandomShapeAnimation>
               size: Size(widget.size, widget.size),
               painter: _ShapePainter(
                 shape: _currentShape,
-                color: _currentColor, // ใช้สีที่สุ่มได้จาก _currentColor
+                color: _currentColor,
                 size: _sizeAnimation.value,
               ),
             ),

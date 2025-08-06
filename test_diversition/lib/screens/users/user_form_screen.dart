@@ -161,7 +161,7 @@ class _UserFormScreenState extends State<UserFormScreen> {
                   ),
                   keyboardType: TextInputType.url,
                 ),
-                const SizedBox(height: 20),
+                const Gap(20),
                 Obx(() {
                   return _isSubmitting.value
                       ? const CircularProgressIndicator()
